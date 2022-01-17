@@ -1,16 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <title>Jeu de dés</title>
 </head>
 <body>
+  <header>
+    <div id="menu">
+
+      <div class="buttonGame buttonText">NEW GAME</div>
+
+      <div>
+        <canvas id="diceCanvas" class="buttonGame">
+        </canvas>
+      </div>
+
+      <div class="buttonGame" id="inGameButton">
+        <div class="buttonText gameButton">ROLL DICE</div>
+        <div class="buttonText gameButton">HOLD</div>
+      </div>
   
+    </div>
+  </header>
 
+  <main>
+    
+    <div id="main">
+      <section class="playerSection" id="player1Section">
+        <div class="player">
+          <div class="namePlayer">
+            PLAYER 1
+          </div>
+          <div class="globalScore">
+            43
+          </div>
+        </div>
 
+        <div class="scoreRound player1">
+          <div>
+            Current
+          </div>
+          <div class="Round">
+            11
+          </div>
+        </div>
+      </section>
+      
+
+      <section class="playerSection" id="player2Section">
+
+        <div class="player">
+          <div class="namePlayer">
+            PLAYER 2
+          </div>
+          <div class="globalScore">
+            72
+          </div>
+        </div>
+
+        <div class="player2 scoreRound">
+          <div>
+            Current
+          </div>
+          <div class="Round">
+            0
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+<script src="diceCanvas.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

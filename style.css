@@ -92,3 +92,11 @@ header{
   align-items: center;
   justify-content: space-around;
 }
+
+#isPlayer1Active {
+  position: absolute;
+}
+
+#isPlayer2Active {
+  position: absolute;
+}

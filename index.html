@@ -14,16 +14,16 @@
   <header>
     <div id="menu">
 
-      <div class="buttonGame buttonText">NEW GAME</div>
+      <div class="buttonGame buttonText" id="newGame">NEW GAME</div>
 
       <div>
-        <canvas id="diceCanvas" class="buttonGame">
+        <canvas id="diceCanvas" class="buttonGame" height="100" width="100">
         </canvas>
       </div>
 
       <div class="buttonGame" id="inGameButton">
-        <div class="buttonText gameButton">ROLL DICE</div>
-        <div class="buttonText gameButton">HOLD</div>
+        <div class="buttonText gameButton" id="rollDice">ROLL DICE</div>
+        <div class="buttonText gameButton" id="hold">HOLD</div>
       </div>
   
     </div>
@@ -35,10 +35,9 @@
       <section class="playerSection" id="player1Section">
         <div class="player">
           <div class="namePlayer">
-            PLAYER 1
+            PLAYER 1 <canvas id="isPlayer1Active"></canvas>
           </div>
-          <div class="globalScore">
-            43
+          <div class="globalScore"><span id="scoreGlobalPlayer1"></span>
           </div>
         </div>
 
@@ -46,8 +45,7 @@
           <div>
             Current
           </div>
-          <div class="Round">
-            11
+          <div class="Round"><span id="scoreRoundPlayer1"></span>
           </div>
         </div>
       </section>
@@ -57,10 +55,9 @@
 
         <div class="player">
           <div class="namePlayer">
-            PLAYER 2
+            PLAYER 2 <canvas id="isPlayer2Active"></canvas>
           </div>
-          <div class="globalScore">
-            72
+          <div class="globalScore"><span id="scoreGlobalPlayer2"></span>
           </div>
         </div>
 
@@ -68,8 +65,7 @@
           <div>
             Current
           </div>
-          <div class="Round">
-            0
+          <div class="Round"><span id="scoreRoundPlayer2"></span>
           </div>
         </div>
 
@@ -77,7 +73,9 @@
 
     </div>
   </main>
+
 <script src="diceCanvas.js"></script>
 <script src="script.js"></script>
+<script src="gameFunction.js"></script>
 </body>
 </html>

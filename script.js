@@ -5,12 +5,14 @@ function entierAleatoire(min, max)
 
 
 
+
+let scoreGlobalPlayer1
+let scoreGlobalPlayer2
+
 function game() {
 
-
-
-  let scoreGlobalPlayer1 = 0
-  let scoreGlobalPlayer2 = 0
+  scoreGlobalPlayer1 = 0
+  scoreGlobalPlayer2 = 0
   let tour = 1
 
   function scoreGlobalPlayer21() {
@@ -43,8 +45,9 @@ function game() {
     scoreGlobalPlayer21()
     scoreRoundPlayer21()
     console.log(`tour : ${tour}`)
-  
+    
     const play1 = () => {
+      
       isPlayer2NoActive()
       isPlayer1Active()
       console.log(`global J1 début tour play 1 : ${scoreGlobalPlayer1}`);
@@ -106,13 +109,14 @@ function game() {
     }
   
     const play2 = () => {
+      //diceWhite();
       isPlayer1NoActive()
       isPlayer2active()
       
       console.log(`global J2 début tour play 1 : ${scoreGlobalPlayer2}`);
 
       const dicePlay2 = document.getElementById('rollDice')
-      dicePlay2.addEventListener('click', diceClicked2) 
+      dicePlay2.addEventListener('click', diceClicked2)
     
       const holdPlayer2 = document.getElementById('hold')
       holdPlayer2.addEventListener('click', holdClicked2)
@@ -170,15 +174,15 @@ function game() {
   
   
 
-
-
-    
-
     //Conditions de fin de partie
     if ((scoreGlobalPlayer1 > 99) || (scoreGlobalPlayer2 > 99)){
-      scoreGlobalPlayer1 = 0
-      scoreGlobalPlayer2 = 0
-      alert('un des 2 joueurs gagne')
+      if(scoreGlobalPlayer1 > 99){
+        alert('félicitation Player 1, vous avez gagné!!')
+      }
+      else if (scoreGlobalPlayer2 > 99){
+        alert('félicitation Player 2, vous avez gagné!!')
+      }
+      
       game()
     }
 
@@ -190,25 +194,24 @@ function game() {
       else {
         play2()
       }
-
     }
+
+    //const newGame = document.getElementById('newGame')
+    //newGame.addEventListener('click', () =>{
+    //  endGame = true
+    //})
+
   }
-  
+
 }
 
 
 
+
+
+
+
 game()
-
-
-const newGame = document.getElementById('newGame')
-
-newGame.addEventListener('click', game)
-
-
-
-
-
 
 
 

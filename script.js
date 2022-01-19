@@ -3,16 +3,14 @@ function entierAleatoire(min, max)
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
+let scoreRoundPlayer1
+let scoreRoundPlayer2
 
 function game() {
-
-
-
   let scoreGlobalPlayer1 = 0
   let scoreGlobalPlayer2 = 0
   let tour = 1
-
+  //fonctions pour l'affichage du score "global"
   function scoreGlobalPlayer21() {
     document.getElementById('scoreGlobalPlayer2').innerHTML = scoreGlobalPlayer2
   }
@@ -20,15 +18,17 @@ function game() {
   function scoreGlobalPlayer11() {
     document.getElementById('scoreGlobalPlayer1').innerHTML = scoreGlobalPlayer1
   }
+
   playGame()
 
   
   function playGame(){
-    let scoreRoundPlayer1 = 0
-    let scoreRoundPlayer2 = 0
+    scoreRoundPlayer1 = 0
+    scoreRoundPlayer2 = 0
     tour = tour + 1
 
-    //fonctions pour l'affichage des différents scores
+   
+    //fonctions pour l'affichage des scores "round"
     function scoreRoundPlayer11() {
       document.getElementById('scoreRoundPlayer1').innerHTML = scoreRoundPlayer1
     }
@@ -42,9 +42,11 @@ function game() {
     scoreRoundPlayer11()
     scoreGlobalPlayer21()
     scoreRoundPlayer21()
-    console.log(`tour : ${tour}`)
-  
+    
     const play1 = () => {
+      console.log(`tour : ${tour}`)
+
+
       isPlayer2NoActive()
       isPlayer1Active()
       console.log(`global J1 début tour play 1 : ${scoreGlobalPlayer1}`);
@@ -101,18 +103,19 @@ function game() {
         scoreRoundPlayer11()
         playGame()
       }
-
-      
     }
   
     const play2 = () => {
+      console.log(`tour : ${tour}`)
+
+
+      //diceWhite();
       isPlayer1NoActive()
       isPlayer2active()
       
       console.log(`global J2 début tour play 1 : ${scoreGlobalPlayer2}`);
-
       const dicePlay2 = document.getElementById('rollDice')
-      dicePlay2.addEventListener('click', diceClicked2) 
+      dicePlay2.addEventListener('click', diceClicked2)
     
       const holdPlayer2 = document.getElementById('hold')
       holdPlayer2.addEventListener('click', holdClicked2)
@@ -151,7 +154,6 @@ function game() {
         scoreRoundPlayer21()
       }
       
-
       function holdClicked2(){
         scoreGlobalPlayer2 = scoreGlobalPlayer2 + scoreRoundPlayer2
         scoreRoundPlayer2 = 0
@@ -163,52 +165,53 @@ function game() {
         playGame()
         
       }
-    
+      
       
     }
-  
-  
-  
 
-
-
+    //const newGame = document.getElementById('newGame')
+    //newGame.addEventListener('click', () =>{
+    //  console.log('dens le newgame');
+    //  replay = 50
+    //  game()
+    //})
     
 
     //Conditions de fin de partie
+
+
+    //if ((replay = 50)) {
+    //  game()
+    //}
+    
     if ((scoreGlobalPlayer1 > 99) || (scoreGlobalPlayer2 > 99)){
-      scoreGlobalPlayer1 = 0
-      scoreGlobalPlayer2 = 0
-      alert('un des 2 joueurs gagne')
+      if(scoreGlobalPlayer1 > 99){
+        alert('félicitation Player 1, vous avez gagné!!')
+      }
+      else if (scoreGlobalPlayer2 > 99){
+        alert('félicitation Player 2, vous avez gagné!!')
+      }
+      console.log('je rentre dans le if');
       game()
     }
-
     
     else {
+
       if(tour%2 == 0){
         play1()
       }
       else {
         play2()
       }
-
     }
   }
-  
+
 }
 
 
 
+
 game()
-
-
-const newGame = document.getElementById('newGame')
-
-newGame.addEventListener('click', game)
-
-
-
-
-
 
 
 

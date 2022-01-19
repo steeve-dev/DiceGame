@@ -14,16 +14,24 @@
   <header>
     <div id="menu">
 
-      <div class="buttonGame buttonText" id="newGame">NEW GAME</div>
-
+      <div class="buttonText" id="newGame">
+        <canvas id="newGameCanvas" height="100" width="100"></canvas>
+        NEW GAME
+      </div>
       <div>
         <canvas id="diceCanvas" class="buttonGame" height="100" width="100">
         </canvas>
       </div>
 
       <div class="buttonGame" id="inGameButton">
-        <div class="buttonText gameButton" id="rollDice">ROLL DICE</div>
-        <div class="buttonText gameButton" id="hold">HOLD</div>
+        <div class="buttonText gameButton" id="rollDice">
+          <canvas id="rollDiceLogo" height="100" width="100"></canvas> 
+          ROLL DICE
+        </div>
+        <div class="buttonText gameButton" id="hold">
+          <canvas id="holdCanvas" height="100" width="100"></canvas> 
+          HOLD
+        </div>
       </div>
   
     </div>
@@ -43,7 +51,7 @@
 
         <div class="scoreRound player1">
           <div>
-            Current
+            CURRENT
           </div>
           <div class="Round"><span id="scoreRoundPlayer1"></span>
           </div>
@@ -63,7 +71,7 @@
 
         <div class="player2 scoreRound">
           <div>
-            Current
+            CURRENT
           </div>
           <div class="Round"><span id="scoreRoundPlayer2"></span>
           </div>
@@ -75,7 +83,8 @@
   </main>
 
 <script src="diceCanvas.js"></script>
-<script src="script.js"></script>
 <script src="gameFunction.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>

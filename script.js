@@ -9,7 +9,7 @@ let scoreRoundPlayer2
 function game() {
   let scoreGlobalPlayer1 = 0
   let scoreGlobalPlayer2 = 0
-  let tour = 1
+  let tour = 0
   //fonctions pour l'affichage du score "global"
   function scoreGlobalPlayer21() {
     document.getElementById('scoreGlobalPlayer2').innerHTML = scoreGlobalPlayer2
@@ -44,33 +44,35 @@ function game() {
     scoreRoundPlayer21()
     
     const play1 = () => {
+      
       console.log(`tour : ${tour}`)
 
 
       isPlayer2NoActive()
       isPlayer1Active()
-      console.log(`global J1 début tour play 1 : ${scoreGlobalPlayer1}`);
   
-      const dicePlay1 = document.getElementById('rollDice')
-      dicePlay1.addEventListener('click', diceClicked) 
+      const dicePlay = document.getElementById('rollDice')
+      dicePlay.addEventListener('click', diceClicked) 
     
-      const holdPlayer1 = document.getElementById('hold')
-      holdPlayer1.addEventListener('click', holdClicked)
+      const holdPlayer = document.getElementById('hold')
+      holdPlayer.addEventListener('click', holdClicked)
     
       function diceClicked(){
+        console.log('on entre dans le diceclicked');
     
         let entier = entierAleatoire(1, 6)
-        console.log(entier);
+        
         if (entier == 1){
           diceOne()
           scoreRoundPlayer1 = 0
-          dicePlay1.removeEventListener('click', diceClicked)
-          holdPlayer1.removeEventListener('click', holdClicked)
+          dicePlay.removeEventListener('click', diceClicked)
+          holdPlayer.removeEventListener('click', holdClicked)
           playGame()
         }
         else if (entier == 2){
           diceTwo()
           scoreRoundPlayer1 = scoreRoundPlayer1 + 2
+          
         }
         else if (entier == 3){
           diceThree()
@@ -79,31 +81,35 @@ function game() {
         else if (entier == 4){
           diceFour()
           scoreRoundPlayer1 = scoreRoundPlayer1 + 4
+          
         }
         else if (entier == 5){
           diceFive()
           scoreRoundPlayer1 = scoreRoundPlayer1 + 5
+          
         }
         else {
           diceSix()
           scoreRoundPlayer1 = scoreRoundPlayer1 + 6
+          
         }
+
         scoreRoundPlayer11()
+        return
       }
       
       
       function holdClicked(){
+        console.log('on entre dans le "hold"');
         scoreGlobalPlayer1 = scoreGlobalPlayer1 + scoreRoundPlayer1
         scoreRoundPlayer1 = 0
-        console.log('hold player1');
-        
-        holdPlayer1.removeEventListener('click', holdClicked)
-        dicePlay1.removeEventListener('click', diceClicked)
-        scoreGlobalPlayer11()
-        scoreRoundPlayer11()
+        holdPlayer.removeEventListener('click', holdClicked)
+        dicePlay.removeEventListener('click', diceClicked)
         playGame()
+
       }
     }
+    
   
     const play2 = () => {
       console.log(`tour : ${tour}`)
@@ -114,21 +120,22 @@ function game() {
       isPlayer2active()
       
       console.log(`global J2 début tour play 1 : ${scoreGlobalPlayer2}`);
-      const dicePlay2 = document.getElementById('rollDice')
-      dicePlay2.addEventListener('click', diceClicked2)
+      const dicePlay = document.getElementById('rollDice')
+      dicePlay.addEventListener('click', diceClicked)
     
-      const holdPlayer2 = document.getElementById('hold')
-      holdPlayer2.addEventListener('click', holdClicked2)
+      const holdPlayer = document.getElementById('hold')
+      holdPlayer.addEventListener('click', holdClicked)
+
     
-      function diceClicked2(){
+      function diceClicked(){
     
         let entier = entierAleatoire(1, 6)
         console.log(entier);
         if (entier == 1){
           diceOne()
           scoreRoundPlayer2 = 0
-          dicePlay2.removeEventListener('click', diceClicked2)
-          holdPlayer2.removeEventListener('click', holdClicked2)
+          dicePlay.removeEventListener('click', diceClicked)
+          holdPlayer.removeEventListener('click', holdClicked)
           playGame()
         }
         else if (entier == 2){
@@ -154,35 +161,19 @@ function game() {
         scoreRoundPlayer21()
       }
       
-      function holdClicked2(){
+      function holdClicked(){
         scoreGlobalPlayer2 = scoreGlobalPlayer2 + scoreRoundPlayer2
         scoreRoundPlayer2 = 0
         console.log('hold player 2');
-        holdPlayer2.removeEventListener('click', holdClicked2)
-        dicePlay2.removeEventListener('click', diceClicked2)
-        scoreGlobalPlayer21()
-        scoreRoundPlayer21()
+        holdPlayer.removeEventListener('click', holdClicked)
+        dicePlay.removeEventListener('click', diceClicked)
         playGame()
-        
       }
-      
-      
+
+
     }
 
-    //const newGame = document.getElementById('newGame')
-    //newGame.addEventListener('click', () =>{
-    //  console.log('dens le newgame');
-    //  replay = 50
-    //  game()
-    //})
     
-
-    //Conditions de fin de partie
-
-
-    //if ((replay = 50)) {
-    //  game()
-    //}
     
     if ((scoreGlobalPlayer1 > 99) || (scoreGlobalPlayer2 > 99)){
       if(scoreGlobalPlayer1 > 99){
@@ -198,11 +189,12 @@ function game() {
     else {
 
       if(tour%2 == 0){
-        play1()
-      }
-      else {
         play2()
       }
+      else {
+        play1()
+      }
+      console.log('je rentre dans le else de fin de parie');
     }
   }
 
@@ -211,8 +203,8 @@ function game() {
 
 
 
-game()
 
+game()
 
 
 

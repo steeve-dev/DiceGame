@@ -6,13 +6,20 @@ function entierAleatoire(min, max)
 let scoreRoundPlayer1 = 0;
 let scoreRoundPlayer2 = 0;
 
-function game() {
+
 
   let newParty = false;
   let scoreGlobalPlayer1 = 0;
   let scoreGlobalPlayer2 = 0;
   let tour = 0;
   //fonctions pour l'affichage du score "global"
+
+
+function game() {
+
+  scoreGlobalPlayer1 = 0
+  scoreGlobalPlayer2 = 0
+
   function scoreGlobalPlayer21() {
     document.getElementById('scoreGlobalPlayer2').innerHTML = scoreGlobalPlayer2;
   }
@@ -45,7 +52,8 @@ function game() {
   )
 
   playGame()
-  
+
+
   function playGame(){
     scoreRoundPlayer1 = 0
     scoreRoundPlayer2 = 0
@@ -60,9 +68,9 @@ function game() {
     scoreRoundPlayer11()
     scoreGlobalPlayer21()
     scoreRoundPlayer21()
-    
+
     const play1 = () => {
-      
+
       console.log(`tour : ${tour}`)
 
       isPlayer2NoActive()
@@ -119,6 +127,7 @@ function game() {
     }
 
     const play2 = () => {
+
       console.log(`tour : ${tour}`)
 
       //diceWhite();
@@ -126,9 +135,10 @@ function game() {
       isPlayer2active()
       
       console.log(`global J2 début tour play 1 : ${scoreGlobalPlayer2}`);
+
       const dicePlay = document.getElementById('rollDice')
       dicePlay.addEventListener('click', diceClicked)
-    
+
       const holdPlayer = document.getElementById('hold')
       holdPlayer.addEventListener('click', holdClicked)
     
@@ -175,6 +185,8 @@ function game() {
       }
     }
 
+    //Conditions de fin de partie
+
     if ((scoreGlobalPlayer1 > 99) || (scoreGlobalPlayer2 > 99)){
       if(scoreGlobalPlayer1 > 99){
         alert('félicitation Player 1, vous avez gagné!!')
@@ -182,6 +194,7 @@ function game() {
       else if (scoreGlobalPlayer2 > 99){
         alert('félicitation Player 2, vous avez gagné!!')
       }
+
       game()
     }
 
@@ -192,12 +205,11 @@ function game() {
       else {
         play1()
       }
+
     }
   }
 }
-
 game()
-
 
 
 
